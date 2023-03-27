@@ -1,6 +1,6 @@
 import pandas as pd
 from pathlib import Path
-from data_app_enum import FinMetric, ComputeMode, DisplayMode, LoanMetric
+from data_app_enum import FinMetric, ComputeMode, DisplayMode, LoanMetric, LoanType
 
 data_folder = Path('data')
 
@@ -13,6 +13,18 @@ _df_dict = {FinMetric.DEFAULT_LOSSES.value: _defaulted,
             FinMetric.PREPAID_LOSSES.value: _prepaid,
             FinMetric.PENALTY_IMPOSED.value: _late_but_repaid,
             FinMetric.PROFIT.value: _profit}
+
+def loan_to_metric(loan):
+    if loan == LoanType.DEFAULTED.value:
+        return FinMetric.DEFAULT_LOSSES.value
+    
+    elif loan == LoanType.PREPAID.value:
+        return FinMetric.PREPAID_LOSSES.value
+    
+    elif loan == LoanType.PROFITABLE.value:
+        return FinMetric.PROFIT.value
+    
+    return FinMetric.PENALTY_IMPOSED.value
 
 def load_all_data() -> tuple[pd.DataFrame]:
     return _defaulted, _late_but_repaid, _prepaid
@@ -84,7 +96,7 @@ def compute_fin_metric(credit_stats:list[str],
     result['FIN_METRIC'] = result['FIN_METRIC'].apply(mapper)
     return result
 
-def compute_loan_metric(credit_stats: list[str],
+def compute_loan_metric(credit_stats: list[str], loan_types: list[str],
                        loan_metric:str, display_mode:str) -> pd.DataFrame:
     
     result_dict = { loan_metric: [], 
@@ -93,7 +105,12 @@ def compute_loan_metric(credit_stats: list[str],
     if display_mode == DisplayMode.DECOMPOSED.value:
         result_dict['CREDIT_STATUS'] = []
 
+    loan_to_fin_data = [loan_to_metric(loan_type) for loan_type in loan_types]
+
     for fin_metric, df in _df_dict.items():
+
+        if fin_metric not in loan_to_fin_data:
+            continue
 
         if display_mode == DisplayMode.ALL.value:
             result = round(df[loan_metric].mean(), 2)
@@ -123,6 +140,9 @@ def compute_loan_metric(credit_stats: list[str],
         elif fin_metric_type == FinMetric.PREPAID_LOSSES.value:
             return 'Prepaid loans'
         
+        elif fin_metric_type == FinMetric.PROFIT.value:
+            return 'Profitable Loans'
+        
         return 'Late Loans'
         
     df = pd.DataFrame.from_dict(result_dict)
@@ -130,30 +150,37 @@ def compute_loan_metric(credit_stats: list[str],
 
     return df
 
-def compute_yield_group(credit_stats: list[str],
-                       loan_metric:str) -> pd.DataFrame:
+def compute_yield_group(credit_stats: list[str], loan_types: list[str],
+                       display_mode:str) -> pd.DataFrame:
     
+    loan_metric = LoanMetric.YIELD_GRP.value
     dfs = []
+
+    loan_to_fin_data = [loan_to_metric(loan_type) for loan_type in loan_types]
+
     for fin_metric, df in _df_dict.items():
+        if fin_metric not in loan_to_fin_data:
+            continue
+
+        if display_mode == DisplayMode.ALL.value:
+            result = df \
+                    .groupby([loan_metric])['SK_ID_PREV'] \
+                    .count() \
+                    .reset_index()
+                
+            result.rename({'SK_ID_PREV': 'Count'}, axis=1, inplace=True)
+            result['FIN_METRIC'] = fin_metric
+            dfs.append(result)
         
-        if 'Default' in credit_stats:
-            default_result = df[df.TARGET == 1] \
-                            .groupby([loan_metric])['SK_ID_PREV'] \
-                            .count() \
-                            .reset_index()
-            default_result['CREDIT_STATUS'] = 'Default'
-            default_result['FIN_METRIC_TYPE'] = fin_metric
-            dfs.append(default_result)
-        
-        if 'No Default' in credit_stats:
-            non_default_result = df[df.TARGET == 0] \
-                                .groupby([loan_metric])['SK_ID_PREV']\
-                                .count() \
-                                .reset_index()
-            non_default_result['CREDIT_STATUS'] = 'Non-Default'
-            non_default_result['FIN_METRIC_TYPE'] = fin_metric
-            dfs.append(non_default_result)
-    
+        elif display_mode == DisplayMode.DECOMPOSED.value:
+
+            if 'Default' in credit_stats:
+                dfs.append(df[df.TARGET == 1])
+
+
+            if 'No Default' in credit_stats:
+                dfs.append(df[df.TARGET == 0])
+            
     def mapper(fin_metric_type):
         if fin_metric_type == FinMetric.DEFAULT_LOSSES.value:
             return 'Defaulted loans'
@@ -161,13 +188,27 @@ def compute_yield_group(credit_stats: list[str],
         elif fin_metric_type == FinMetric.PREPAID_LOSSES.value:
             return 'Prepaid loans'
         
+        elif fin_metric_type == FinMetric.PROFIT.value:
+            return 'Profitable Loans'
         return 'Late Loans'
     
     df = pd.concat(dfs)
-    df['FIN_METRIC_TYPE'] = df['FIN_METRIC_TYPE'].apply(mapper)
-    df.rename({'SK_ID_PREV': 'Loan Counts'}, axis=1, inplace=True)
+    if display_mode == DisplayMode.ALL.value:
+        df['FIN_METRIC'] = df['FIN_METRIC'].apply(mapper)
+    
+    if display_mode == DisplayMode.DECOMPOSED.value:
+        df = df \
+            .groupby(['TARGET', loan_metric])['SK_ID_PREV'] \
+            .count() \
+            .reset_index() \
+            .rename({'SK_ID_PREV': 'Count', 'TARGET': 'Credit Worthiness', loan_metric: 'Previous Yield Group'}, axis=1)
+        
+        def credit_mapper(value):
+            if value:
+                return 'Default'
+            return 'No Default'
+        
+        df['Credit Worthiness'] = df['Credit Worthiness'].apply(credit_mapper)
+        df = df.pivot(index='Credit Worthiness', columns='Previous Yield Group', values='Count')
 
-    #df = df.pivot(index=['FIN_METRIC_TYPE', 'CREDIT_STATUS'], 
-                  #columns=loan_metric, values='Loan Counts') 
-    print(df)
     return df
