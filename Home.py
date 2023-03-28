@@ -1,5 +1,11 @@
 import streamlit as st
 
+st.markdown("# Scope :telescope:")
+scope_txt = """
+I only consider **completed cash loans** in my analysis.
+"""
+st.markdown(scope_txt)
+
 st.markdown("# Goal :goal_net:")
 
 goal_txt = """
