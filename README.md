@@ -3,7 +3,7 @@
 ## Links
 1. Original dataset from [Home Credit](https://www.kaggle.com/competitions/home-credit-default-risk/data).
 2. [Jupyter notebook](https://github.com/HoWeiChin/GA_Capstone/blob/main/extracting-instalment-payment-features.ipynb) to extract the Completed Cash Loans data.
-3. The interactive [Dashboard](https://howeichin-ga-capstone-homecreditdashboard-app-hg8136.streamlit.app/) deployed as a streamlit app.
+3. The interactive [Dashboard](https://howeichin-ga-capstone-homecreditdashboard-home-9qwfal.streamlit.app/Loan_Metrics) deployed as a streamlit app.
 
 ## Background
 <p>I created this dashboard to visualise data obtained from completed cash loan. </p>
