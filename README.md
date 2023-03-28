@@ -46,8 +46,8 @@ Note 2:
 1. First 3 metrics are related to business profitability. 
 2. 4th metrics are related to fixed income risk. 
 3. 5th metric visualises credit migration when the dashboard decomposes the data into current defaulters and non-defaulters:
-  1. For example, under "Select Display Mode", choose "Decomposed".
-  2. The visualisation (rightmost of 2nd row) shows that 92, 000 loans were previously classified as "Middle" risk. But the borrowers of these previous loans were now labelled as "No Default".
+    1. For example, under "Select Display Mode", choose "Decomposed".
+    2. The visualisation (rightmost of 2nd row) shows that 92, 000 loans were previously classified as "Middle" risk. But the borrowers of these previous loans were now labelled as "No Default".
 
 ## Dashboard Modes
 The dashboard has 2 modes currently:
