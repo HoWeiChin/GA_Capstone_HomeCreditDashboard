@@ -22,7 +22,7 @@ I classifed the completed cash loans into 4 categories:
 2. **Total Loan Repaid**: Principal + any Interest paid by a borrower.
 3. **Early repayment of principal/prepayment**: Principal is repaid before the full duration of the loan. A lender loses potential interest revenue due to prepayment.
 4. **Late repayment of principal**:  Principal is repaid after the full duration of the loan.
-5. **Yield Group**: This is categorical measure of credit risk of a loan.
+5. **Yield Group**: This is a categorical measure of credit risk of a loan.
 
 **Definition of 4 loan categories**:
 1. **Prepaid**: Prepayment causes potential interest revenue to be lost, but there are no unpaid oligations: **Total Loan Repaid** < **Future Value**.
