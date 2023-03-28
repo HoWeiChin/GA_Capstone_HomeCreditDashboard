@@ -25,10 +25,10 @@ I classifed the completed cash loans into 4 categories:
 5. **Yield Group**: This is categorical measure of credit risk of a loan.
 
 **Definition of 4 loan categories**:
-1. **Prepaid**: Prepayment and loses potential interest revenue due to prepayment, there are no unpaid oligations: **Total Loan Repaid** < **Future Value**.
-2. **Defaulted**: Late repayment and there are unpaid interest obligations: **Total Loan Repaid** < **Future Value**.
-3. **Late**: Late repayment and there are late penalties which leads to  **Total Loan Repaid** > **Future Value**.
-4. **Profitable**: Loan principals which were prepaid or repaid timely. These loans are profitable because **Total Loan Repaid** > **Principal**. A lender gains cash flow from lending and getting back the principal.
+1. **Prepaid**: Prepayment causes potential interest revenue to be lost, but there are no unpaid oligations: **Total Loan Repaid** < **Future Value**.
+2. **Defaulted**: Late repayment with unpaid interest obligations: **Total Loan Repaid** < **Future Value**.
+3. **Late**: Late repayment with late penalties paid: **Total Loan Repaid** > **Future Value**.
+4. **Profitable**: Loan principals which were prepaid or repaid timely. These loans are profitable because **Total Loan Repaid** > **Principal**.
 
 ## Goals
 The dashboard answers the following:
