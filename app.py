@@ -1,6 +1,5 @@
 import streamlit as st
 import plotly.express as px
-import plost
 from utils import compute_fin_metric, compute_loan_metric, compute_yield_group
 from data_app_enum import (ComputeMode, CreditStats, DisplayMode,
                            LoanMetric, LoanType)
