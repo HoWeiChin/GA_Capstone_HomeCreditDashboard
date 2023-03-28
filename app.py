@@ -46,7 +46,6 @@ with st.container():
         df = compute_fin_metric(credit_stats=None, compute_mode=compute_mode, display_mode=display_mode)
         df.rename({'FIN_METRIC': 'Financials', 'VALUE': '$ (in thousands)'}, axis=1, inplace=True)
 
-        df.sort_values(by='$ (in thousands)', ascending=False, inplace=True)
         fig = px.bar(
                 df, x='Financials', 
                     y='$ (in thousands)', color='Financials', width=900, height=600)
@@ -58,7 +57,6 @@ with st.container():
                    'VALUE': '$ (in thousands)', 
                    'CREDIT_STATUS': 'Credit Worthiness'}, axis=1, inplace=True)
         
-        df.sort_values(by='$ (in thousands)', ascending=False, inplace=True)
         fig = px.bar(
                 df, x='Financials', 
                     y='$ (in thousands)', color='Credit Worthiness', width=900, height=600)
@@ -73,7 +71,6 @@ with col_interest:
         df = compute_loan_metric(credit_stats=None, loan_types=loan_types, loan_metric=LoanMetric.INTEREST_RATE.value ,display_mode=display_mode)
         df.rename({'FIN_METRIC': 'Loan Types', LoanMetric.INTEREST_RATE.value: 'Mean Annualised Interest Rate (in %)'}, axis=1, inplace=True)
         
-        df.sort_values(by='Mean Annualised Interest Rate (in %)', ascending=False, inplace=True)
         fig = px.bar(df, x='Loan Types', y='Mean Annualised Interest Rate (in %)', color='Loan Types', width=400, height=500)
         st.plotly_chart(fig)
     
@@ -83,7 +80,6 @@ with col_interest:
                    LoanMetric.INTEREST_RATE.value: 'Mean Annualised Interest Rate (in %)', 
                    'CREDIT_STATUS': 'Credit Worthiness'}, axis=1, inplace=True)
         
-        df.sort_values(by='Mean Annualised Interest Rate (in %)', ascending=False, inplace=True)
         fig = px.bar(df, x='Loan Types', y='Mean Annualised Interest Rate (in %)', color='Credit Worthiness', width=400, height=500)
         st.plotly_chart(fig)
     
@@ -91,7 +87,6 @@ with col_tenure:
     if display_mode == DisplayMode.ALL.value:
         df = compute_loan_metric(credit_stats=None, loan_types=loan_types, loan_metric=LoanMetric.TENURE.value ,display_mode=display_mode)
         df.rename({'FIN_METRIC': 'Loan Types', LoanMetric.TENURE.value: 'Mean Loan Tenure (in Months)'}, axis=1, inplace=True)
-        df.sort_values(by='Mean Loan Tenure (in Months)', ascending=False, inplace=True)
 
         fig = px.bar(df, x='Loan Types', y='Mean Loan Tenure (in Months)', color='Loan Types', width=400, height=500)
         st.plotly_chart(fig)
@@ -101,7 +96,6 @@ with col_tenure:
         df.rename({'FIN_METRIC': 'Loan Types', 
                    LoanMetric.TENURE.value: 'Mean Loan Tenure (in Months)', 
                    'CREDIT_STATUS': 'Credit Worthiness'}, axis=1, inplace=True)
-        df.sort_values(by='Mean Loan Tenure (in Months)', ascending=False, inplace=True)
 
         fig = px.bar(df, x='Loan Types', y='Mean Loan Tenure (in Months)', color='Credit Worthiness', width=400, height=500)
         st.plotly_chart(fig)
@@ -111,7 +105,6 @@ with col_yield_grp:
         df = compute_yield_group(credit_stats=None, loan_types=loan_types, display_mode=display_mode)
         df.rename({'FIN_METRIC': 'Loan Types', LoanMetric.YIELD_GRP.value: 'Previous Yield Group'}, axis=1, inplace=True)
 
-        df.sort_values(by='Count', ascending=False, inplace=True)
         fig = px.bar(df, x='Loan Types', y='Count', 
                      color='Previous Yield Group', color_discrete_sequence=['forestgreen',  'red', 'yellowgreen', 'darkgreen'], 
                      width=400, height=500)
@@ -120,6 +113,6 @@ with col_yield_grp:
     elif display_mode == DisplayMode.DECOMPOSED.value:
         df = compute_yield_group(credit_stats=credit_stats, loan_types=loan_types, display_mode=display_mode)
         
-        fig = px.bar(df, x=df.columns, y=df.index, color_discrete_sequence=['red', 'darkgreen', 'yellowgreen', 'forestgreen'],
+        fig = px.bar(df, x=df.columns, y=df.index, color_discrete_sequence=['forestgreen',  'red', 'yellowgreen', 'darkgreen'],
                      width=400, height=500)
         st.plotly_chart(fig)
