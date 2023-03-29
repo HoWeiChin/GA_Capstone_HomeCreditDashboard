@@ -18,7 +18,8 @@ credit_stats_loan = st.sidebar \
                                  options=[CreditStats.DEFAULT.value, CreditStats.NO_DEFAULT.value], 
                                  default=[CreditStats.DEFAULT.value, CreditStats.NO_DEFAULT.value],
                                 disabled=disabled_loan)
-
+if len(credit_stats_loan) == 0:
+    credit_stats_loan = [CreditStats.DEFAULT.value]
 
 st.sidebar.subheader('For Loan Metrics:')
 loan_options = [LoanType.DEFAULTED.value, LoanType.LATE.value,  
@@ -26,6 +27,9 @@ loan_options = [LoanType.DEFAULTED.value, LoanType.LATE.value,
 loan_types = st.sidebar \
                 .multiselect('Select Loan:', options=loan_options, default=loan_options)
 
+if len(loan_types) == 0:
+    loan_types = [LoanType.DEFAULTED.value]
+    
 st.markdown('### Loan Metrics')
 col_interest, col_tenure = st.columns(2)
 
