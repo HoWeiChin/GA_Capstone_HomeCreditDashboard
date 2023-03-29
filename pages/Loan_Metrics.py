@@ -34,7 +34,7 @@ with col_interest:
         df = compute_loan_metric(credit_stats=None, loan_types=loan_types, loan_metric=LoanMetric.INTEREST_RATE.value ,display_mode=display_mode_loan)
         df.rename({'FIN_METRIC': 'Loan Types', LoanMetric.INTEREST_RATE.value: 'Mean Annualised Interest Rate (in %)'}, axis=1, inplace=True)
         title = 'Mean Annualised Interest Rate by Loan Types'
-        fig = px.bar(df, x='Loan Types', y='Mean Annualised Interest Rate (in %)', color='Loan Types', title=title, width=500, height=500)
+        fig = px.bar(df, x='Loan Types', y='Mean Annualised Interest Rate (in %)', color='Loan Types', title=title, width=400, height=500)
         st.plotly_chart(fig)
     
     elif display_mode_loan == DisplayMode.DECOMPOSED.value:
@@ -42,8 +42,8 @@ with col_interest:
         df.rename({'FIN_METRIC': 'Loan Types', 
                    LoanMetric.INTEREST_RATE.value: 'Mean Annualised Interest Rate (in %)', 
                    'CREDIT_STATUS': 'Credit Worthiness'}, axis=1, inplace=True)
-        title = 'Mean Annualised Interest Rate by Loan Types and Credit Worthiness'
-        fig = px.bar(df, x='Loan Types', y='Mean Annualised Interest Rate (in %)', color='Credit Worthiness', title=title, width=500, height=500)
+        title = 'Mean Annualised Interest Rate by Loan Types <br> and Credit Worthiness'
+        fig = px.bar(df, x='Loan Types', y='Mean Annualised Interest Rate (in %)', color='Credit Worthiness', title=title, width=400, height=500)
         st.plotly_chart(fig)
     
 with col_tenure:
@@ -51,7 +51,7 @@ with col_tenure:
         df = compute_loan_metric(credit_stats=None, loan_types=loan_types, loan_metric=LoanMetric.TENURE.value ,display_mode=display_mode_loan)
         df.rename({'FIN_METRIC': 'Loan Types', LoanMetric.TENURE.value: 'Mean Loan Tenure (in Months)'}, axis=1, inplace=True)
         title = 'Mean Tenure by Loan Types'
-        fig = px.bar(df, x='Loan Types', y='Mean Loan Tenure (in Months)', color='Loan Types', title=title, width=500, height=500)
+        fig = px.bar(df, x='Loan Types', y='Mean Loan Tenure (in Months)', color='Loan Types', title=title, width=400, height=500)
         st.plotly_chart(fig)
     
     elif display_mode_loan == DisplayMode.DECOMPOSED.value:
@@ -60,7 +60,7 @@ with col_tenure:
                    LoanMetric.TENURE.value: 'Mean Loan Tenure (in Months)', 
                    'CREDIT_STATUS': 'Credit Worthiness'}, axis=1, inplace=True)
         title = 'Mean Tenure by Loan Types and Credit Worthiness'
-        fig = px.bar(df, x='Loan Types', y='Mean Loan Tenure (in Months)', color='Credit Worthiness', title=title, width=500, height=500)
+        fig = px.bar(df, x='Loan Types', y='Mean Loan Tenure (in Months)', color='Credit Worthiness', title=title, width=400, height=500)
         st.plotly_chart(fig)
 
 col_yield_grp, _ = st.columns(2)
