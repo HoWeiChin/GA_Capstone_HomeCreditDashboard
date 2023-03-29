@@ -33,8 +33,9 @@ with col_interest:
     if display_mode_loan == DisplayMode.ALL.value:
         df = compute_loan_metric(credit_stats=None, loan_types=loan_types, loan_metric=LoanMetric.INTEREST_RATE.value ,display_mode=display_mode_loan)
         df.rename({'FIN_METRIC': 'Loan Types', LoanMetric.INTEREST_RATE.value: 'Mean Annualised Interest Rate (in %)'}, axis=1, inplace=True)
-        title = 'Mean Annualised Interest Rate by Loan Types'
-        fig = px.bar(df, x='Loan Types', y='Mean Annualised Interest Rate (in %)', color='Loan Types', title=title, width=300, height=500)
+        title = 'Mean Annualised Interest Rate \n \
+                by Loan Types'
+        fig = px.bar(df, x='Loan Types', y='Mean Annualised Interest Rate (in %)', color='Loan Types', title=title, width=400, height=500)
         st.plotly_chart(fig)
     
     elif display_mode_loan == DisplayMode.DECOMPOSED.value:
@@ -42,16 +43,18 @@ with col_interest:
         df.rename({'FIN_METRIC': 'Loan Types', 
                    LoanMetric.INTEREST_RATE.value: 'Mean Annualised Interest Rate (in %)', 
                    'CREDIT_STATUS': 'Credit Worthiness'}, axis=1, inplace=True)
-        title = 'Mean Annualised Interest Rate by Loan Types and Credit Worthiness'
-        fig = px.bar(df, x='Loan Types', y='Mean Annualised Interest Rate (in %)', color='Credit Worthiness', title=title, width=300, height=500)
+        title = 'Mean Annualised Interest Rate \n \
+                by Loan Types and Credit Worthiness'
+        fig = px.bar(df, x='Loan Types', y='Mean Annualised Interest Rate (in %)', color='Credit Worthiness', title=title, width=400, height=500)
         st.plotly_chart(fig)
     
 with col_tenure:
     if display_mode_loan == DisplayMode.ALL.value:
         df = compute_loan_metric(credit_stats=None, loan_types=loan_types, loan_metric=LoanMetric.TENURE.value ,display_mode=display_mode_loan)
         df.rename({'FIN_METRIC': 'Loan Types', LoanMetric.TENURE.value: 'Mean Loan Tenure (in Months)'}, axis=1, inplace=True)
-        title = 'Mean Tenure by Loan Types'
-        fig = px.bar(df, x='Loan Types', y='Mean Loan Tenure (in Months)', color='Loan Types', title=title, width=300, height=500)
+        title = 'Mean Tenure \n \
+                by Loan Types'
+        fig = px.bar(df, x='Loan Types', y='Mean Loan Tenure (in Months)', color='Loan Types', title=title, width=400, height=500)
         st.plotly_chart(fig)
     
     elif display_mode_loan == DisplayMode.DECOMPOSED.value:
@@ -59,8 +62,9 @@ with col_tenure:
         df.rename({'FIN_METRIC': 'Loan Types', 
                    LoanMetric.TENURE.value: 'Mean Loan Tenure (in Months)', 
                    'CREDIT_STATUS': 'Credit Worthiness'}, axis=1, inplace=True)
-        title = 'Mean Tenure by Loan Types and Credit Worthiness'
-        fig = px.bar(df, x='Loan Types', y='Mean Loan Tenure (in Months)', color='Credit Worthiness', title=title, width=300, height=500)
+        title = 'Mean Tenure \n \
+                by Loan Types and Credit Worthiness'
+        fig = px.bar(df, x='Loan Types', y='Mean Loan Tenure (in Months)', color='Credit Worthiness', title=title, width=400, height=500)
         st.plotly_chart(fig)
 
 with col_yield_grp:
@@ -68,15 +72,17 @@ with col_yield_grp:
         df = compute_yield_group(credit_stats=None, loan_types=loan_types, display_mode=display_mode_loan)
         df.rename({'FIN_METRIC': 'Loan Types', LoanMetric.YIELD_GRP.value: 'Previous Yield Group'}, axis=1, inplace=True)
 
-        title = 'Composition of Yield Group by Loan Type'
+        title = 'Composition of Yield Group \n \
+                by Loan Type'
         fig = px.bar(df, x='Loan Types', y='Count', 
                      color='Previous Yield Group', color_discrete_sequence=['forestgreen',  'red', 'yellowgreen', 'darkgreen'], 
-                     title=title, width=300, height=500)
+                     title=title, width=400, height=500)
         st.plotly_chart(fig)
 
     elif display_mode_loan == DisplayMode.DECOMPOSED.value:
         df = compute_yield_group(credit_stats=credit_stats_loan, loan_types=loan_types, display_mode=display_mode_loan)
-        title = 'Composition of Yield Group by Credit Worthiness'
+        title = 'Composition of Yield Group \n \
+                by Credit Worthiness'
         fig = px.bar(df, x=df.columns, y=df.index, color_discrete_sequence=['forestgreen',  'red', 'yellowgreen', 'darkgreen'],
-                     title=title, width=300, height=500)
+                     title=title, width=400, height=500)
         st.plotly_chart(fig)
