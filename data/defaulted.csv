@@ -1,26 +1,26 @@
 SK_ID_CURR,SK_ID_PREV,AMT_ANNUITY,CNT_PAYMENT,TARGET,AMT_CREDIT,TOTAL_REPAID_PER_LOAN,FINAL_INSTAL_NUM,FV,DEFAULT_LOSSES,AMT_GOODS_PRICE,IS_INSURED,CODE_GENDER,NAME_INCOME_TYPE,NAME_HOUSING_TYPE,FLAG_EMP_PHONE,FLAG_CONT_MOBILE,FLAG_OWN_REALTY,REG_CITY_NOT_LIVE_CITY,REG_CITY_NOT_WORK_CITY,NAME_EDUCATION_TYPE,NAME_PRODUCT_TYPE,NAME_YIELD_GROUP,INTEREST_RATE
-120356,2439869,9612.0,18.0,0,114273.0,170675.0,19,173016.0,2341.0,90000.0,True,F,Working,House / apartment,Yes,Yes,N,No,No,Secondary / secondary special,x-sell,high,57.41
-126044,2283851,80015.0,18.0,0,1033124.0,1389781.0,19,1440270.0,50489.0,990000.0,True,F,Commercial associate,House / apartment,Yes,Yes,Y,No,No,Higher education,x-sell,middle,45.1
-143399,2822186,14495.0,30.0,0,301136.0,432291.0,31,434850.0,2559.0,225000.0,True,F,Working,Municipal apartment,Yes,Yes,Y,No,No,Secondary / secondary special,walk-in,low_normal,30.67
-147453,2282812,20750.0,12.0,0,202500.0,240129.0,13,249000.0,8871.0,202500.0,False,F,Pensioner,House / apartment,No,Yes,Y,No,No,Secondary / secondary special,x-sell,middle,40.0
-181862,2069880,28743.0,24.0,0,491580.0,689670.0,25,689832.0,162.0,450000.0,True,F,Working,House / apartment,Yes,Yes,N,No,No,Secondary / secondary special,x-sell,middle,34.91
-197823,2715565,50737.0,24.0,0,952272.0,1217391.0,25,1217688.0,297.0,900000.0,True,F,Working,House / apartment,Yes,Yes,N,No,No,Secondary / secondary special,x-sell,low_normal,24.82
-206376,1340125,79091.0,18.0,0,1178703.0,1392241.0,19,1423638.0,31397.0,1129500.0,True,F,Pensioner,House / apartment,No,Yes,Y,No,No,Secondary / secondary special,x-sell,low_normal,24.81
-235896,2653591,49872.0,36.0,0,1100709.0,1788290.0,37,1795392.0,7102.0,1012500.0,True,F,Working,House / apartment,Yes,Yes,Y,No,No,Secondary / secondary special,x-sell,middle,35.13
-236105,2073825,25199.0,12.0,0,239850.0,259950.0,13,302388.0,42438.0,225000.0,True,F,Pensioner,House / apartment,No,Yes,Y,No,No,Secondary / secondary special,x-sell,middle,45.09
-237785,1855790,14202.0,24.0,0,254340.0,318201.0,25,340848.0,22647.0,229500.0,True,F,Working,House / apartment,Yes,Yes,Y,No,No,Secondary / secondary special,x-sell,low_normal,29.86
-239228,1001318,16206.0,24.0,0,274941.0,386989.0,25,388944.0,1955.0,247500.0,True,F,Pensioner,House / apartment,No,Yes,Y,No,No,Secondary / secondary special,x-sell,middle,35.81
-250800,1359261,25199.0,12.0,0,239850.0,259950.0,13,302388.0,42438.0,225000.0,True,F,Pensioner,House / apartment,No,Yes,Y,No,No,Secondary / secondary special,x-sell,middle,45.09
-257942,2429514,82038.0,18.0,0,1178703.0,1470798.0,19,1476684.0,5886.0,1129500.0,True,F,Pensioner,House / apartment,No,Yes,N,No,No,Higher education,x-sell,low_normal,29.86
-260972,1383970,30900.0,6.0,0,156622.0,181877.0,7,185400.0,3523.0,135000.0,True,F,Commercial associate,House / apartment,Yes,Yes,Y,No,No,Secondary / secondary special,x-sell,high,60.52
-270208,2613142,29378.0,24.0,0,500211.0,703163.0,25,705072.0,1909.0,463500.0,True,F,Pensioner,House / apartment,No,Yes,N,No,No,Secondary / secondary special,x-sell,middle,35.4
-275372,2475722,30202.0,18.0,0,389952.0,516917.0,19,543636.0,26719.0,315000.0,True,F,Working,With parents,Yes,Yes,N,No,No,Secondary / secondary special,x-sell,middle,45.1
-279716,2822187,14495.0,30.0,0,301136.0,432291.0,31,434850.0,2559.0,225000.0,True,F,Working,Municipal apartment,Yes,Yes,Y,No,No,Secondary / secondary special,walk-in,low_normal,30.67
-293212,2304005,11292.0,30.0,0,234000.0,338659.0,31,338760.0,101.0,234000.0,False,F,Pensioner,Municipal apartment,No,Yes,N,No,No,Secondary / secondary special,x-sell,low_normal,30.9
-296869,1591965,52346.0,30.0,0,1230808.0,1567067.0,31,1570380.0,3313.0,1147500.0,True,F,Pensioner,House / apartment,No,Yes,Y,No,No,Higher education,x-sell,low_action,19.8
-312380,1532455,134217.0,12.0,0,1428147.0,1508359.0,13,1610604.0,102245.0,1395000.0,True,F,Pensioner,With parents,No,Yes,Y,No,No,Secondary / secondary special,x-sell,low_normal,22.8
-356982,1133345,8060.0,30.0,0,157275.0,240108.0,31,241800.0,1692.0,135000.0,True,F,Working,House / apartment,Yes,Yes,Y,No,No,Secondary / secondary special,x-sell,middle,36.42
-359363,2292592,39407.0,18.0,0,546178.0,675197.0,19,709326.0,34129.0,450000.0,True,F,Commercial associate,House / apartment,Yes,Yes,Y,No,No,Secondary / secondary special,x-sell,middle,34.91
-380223,1597947,80015.0,18.0,0,1033124.0,1389781.0,19,1440270.0,50489.0,990000.0,True,F,Commercial associate,House / apartment,Yes,Yes,N,No,No,Higher education,x-sell,middle,45.1
-436244,2517270,55834.0,24.0,0,999886.0,1301862.0,25,1340016.0,38154.0,945000.0,True,F,Pensioner,House / apartment,No,Yes,Y,No,No,Secondary / secondary special,x-sell,low_normal,29.86
-454992,1431548,19318.0,24.0,1,299938.0,461397.0,25,463632.0,2235.0,270000.0,True,F,Working,House / apartment,Yes,Yes,N,No,No,Higher education,x-sell,middle,45.88
+120356,2439869,9612.0,18.0,0,114273.0,170675.0,19,173016.0,2341.0,90000.0,True,F,Working,House / apartment,Yes,Yes,N,No,No,Secondary / secondary special,x-sell,high,30.0
+126044,2283851,80015.0,18.0,0,1033124.0,1389781.0,19,1440270.0,50489.0,990000.0,True,F,Commercial associate,House / apartment,Yes,Yes,Y,No,No,Higher education,x-sell,middle,20.0
+143399,2822186,14495.0,30.0,0,301136.0,432291.0,31,434850.0,2559.0,225000.0,True,F,Working,Municipal apartment,Yes,Yes,Y,No,No,Secondary / secondary special,walk-in,low_normal,20.0
+147453,2282812,20750.0,12.0,0,202500.0,240129.0,13,249000.0,8871.0,202500.0,False,F,Pensioner,House / apartment,No,Yes,Y,No,No,Secondary / secondary special,x-sell,middle,20.0
+181862,2069880,28743.0,24.0,0,491580.0,689670.0,25,689832.0,162.0,450000.0,True,F,Working,House / apartment,Yes,Yes,N,No,No,Secondary / secondary special,x-sell,middle,20.0
+197823,2715565,50737.0,24.0,0,952272.0,1217391.0,25,1217688.0,297.0,900000.0,True,F,Working,House / apartment,Yes,Yes,N,No,No,Secondary / secondary special,x-sell,low_normal,10.0
+206376,1340125,79091.0,18.0,0,1178703.0,1392241.0,19,1423638.0,31397.0,1129500.0,True,F,Pensioner,House / apartment,No,Yes,Y,No,No,Secondary / secondary special,x-sell,low_normal,10.0
+235896,2653591,49872.0,36.0,0,1100709.0,1788290.0,37,1795392.0,7102.0,1012500.0,True,F,Working,House / apartment,Yes,Yes,Y,No,No,Secondary / secondary special,x-sell,middle,20.0
+236105,2073825,25199.0,12.0,0,239850.0,259950.0,13,302388.0,42438.0,225000.0,True,F,Pensioner,House / apartment,No,Yes,Y,No,No,Secondary / secondary special,x-sell,middle,30.0
+237785,1855790,14202.0,24.0,0,254340.0,318201.0,25,340848.0,22647.0,229500.0,True,F,Working,House / apartment,Yes,Yes,Y,No,No,Secondary / secondary special,x-sell,low_normal,20.0
+239228,1001318,16206.0,24.0,0,274941.0,386989.0,25,388944.0,1955.0,247500.0,True,F,Pensioner,House / apartment,No,Yes,Y,No,No,Secondary / secondary special,x-sell,middle,20.0
+250800,1359261,25199.0,12.0,0,239850.0,259950.0,13,302388.0,42438.0,225000.0,True,F,Pensioner,House / apartment,No,Yes,Y,No,No,Secondary / secondary special,x-sell,middle,30.0
+257942,2429514,82038.0,18.0,0,1178703.0,1470798.0,19,1476684.0,5886.0,1129500.0,True,F,Pensioner,House / apartment,No,Yes,N,No,No,Higher education,x-sell,low_normal,20.0
+260972,1383970,30900.0,6.0,0,156622.0,181877.0,7,185400.0,3523.0,135000.0,True,F,Commercial associate,House / apartment,Yes,Yes,Y,No,No,Secondary / secondary special,x-sell,high,40.0
+270208,2613142,29378.0,24.0,0,500211.0,703163.0,25,705072.0,1909.0,463500.0,True,F,Pensioner,House / apartment,No,Yes,N,No,No,Secondary / secondary special,x-sell,middle,20.0
+275372,2475722,30202.0,18.0,0,389952.0,516917.0,19,543636.0,26719.0,315000.0,True,F,Working,With parents,Yes,Yes,N,No,No,Secondary / secondary special,x-sell,middle,20.0
+279716,2822187,14495.0,30.0,0,301136.0,432291.0,31,434850.0,2559.0,225000.0,True,F,Working,Municipal apartment,Yes,Yes,Y,No,No,Secondary / secondary special,walk-in,low_normal,20.0
+293212,2304005,11292.0,30.0,0,234000.0,338659.0,31,338760.0,101.0,234000.0,False,F,Pensioner,Municipal apartment,No,Yes,N,No,No,Secondary / secondary special,x-sell,low_normal,20.0
+296869,1591965,52346.0,30.0,0,1230808.0,1567067.0,31,1570380.0,3313.0,1147500.0,True,F,Pensioner,House / apartment,No,Yes,Y,No,No,Higher education,x-sell,low_action,10.0
+312380,1532455,134217.0,12.0,0,1428147.0,1508359.0,13,1610604.0,102245.0,1395000.0,True,F,Pensioner,With parents,No,Yes,Y,No,No,Secondary / secondary special,x-sell,low_normal,10.0
+356982,1133345,8060.0,30.0,0,157275.0,240108.0,31,241800.0,1692.0,135000.0,True,F,Working,House / apartment,Yes,Yes,Y,No,No,Secondary / secondary special,x-sell,middle,20.0
+359363,2292592,39407.0,18.0,0,546178.0,675197.0,19,709326.0,34129.0,450000.0,True,F,Commercial associate,House / apartment,Yes,Yes,Y,No,No,Secondary / secondary special,x-sell,middle,20.0
+380223,1597947,80015.0,18.0,0,1033124.0,1389781.0,19,1440270.0,50489.0,990000.0,True,F,Commercial associate,House / apartment,Yes,Yes,N,No,No,Higher education,x-sell,middle,20.0
+436244,2517270,55834.0,24.0,0,999886.0,1301862.0,25,1340016.0,38154.0,945000.0,True,F,Pensioner,House / apartment,No,Yes,Y,No,No,Secondary / secondary special,x-sell,low_normal,20.0
+454992,1431548,19318.0,24.0,1,299938.0,461397.0,25,463632.0,2235.0,270000.0,True,F,Working,House / apartment,Yes,Yes,N,No,No,Higher education,x-sell,middle,20.0
