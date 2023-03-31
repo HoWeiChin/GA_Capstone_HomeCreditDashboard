@@ -6,17 +6,6 @@ class FinMetric(Enum):
     PENALTY_IMPOSED = 'PENALTY_IMPOSED'
     PROFIT = 'PROFIT'
 
-class ComputeMode(Enum):
-    SUM = 'Sum'
-    MEAN = 'Mean'
-
-class DisplayMode(Enum):
-    ALL = 'All'
-    DECOMPOSED = 'Decomposed'
-
-class CreditStats(Enum):
-    DEFAULT = 'Default'
-    NO_DEFAULT = 'No Default'
 
 class LoanMetric(Enum):
     INTEREST_RATE = 'INTEREST_RATE'
