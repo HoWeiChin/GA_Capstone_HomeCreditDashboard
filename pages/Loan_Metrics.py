@@ -25,7 +25,7 @@ with col_interest:
                     "Defaulted loans": "red",
                     "Prepaid loans": "grey",
                     "Late loans": "salmon",
-                    "Profitable loans": "limegreen"})
+                    "Profitable loans": "limegreen"}, text_auto=True)
     st.plotly_chart(fig)
     
 with col_tenure:
@@ -38,7 +38,7 @@ with col_tenure:
                     "Defaulted loans": "red",
                     "Prepaid loans": "grey",
                     "Late loans": "salmon",
-                    "Profitable loans": "limegreen"})
+                    "Profitable loans": "limegreen"}, text_auto=True)
     st.plotly_chart(fig)
     
 col_yield_grp, _ = st.columns(2)
@@ -51,5 +51,5 @@ with col_yield_grp:
                     "high": "red",
                     "middle": "blue",
                     "low_action": "darkgreen",
-                    "low_normal": "limegreen"})
+                    "low_normal": "limegreen"}, text_auto=True)
     st.plotly_chart(fig)
