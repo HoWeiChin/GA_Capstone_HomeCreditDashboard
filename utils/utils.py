@@ -1,6 +1,7 @@
 import pandas as pd
+import numpy as np
 from pathlib import Path
-from enums.data_app_enum import FinMetric, ComputeMode, DisplayMode, LoanMetric, LoanType
+from enums.data_app_enum import FinMetric, DisplayMode, LoanMetric, LoanType
 
 data_folder = Path('data')
 
@@ -41,8 +42,7 @@ def load_feature(feature:str) -> tuple[str]:
     
     return sorted(tuple(union_set))
 
-def compute_fin_metric(credit_stats:list[str], 
-                       compute_mode:str, display_mode:str):
+def compute_fin_metric():
     
     def mapper(fin_metric):
         if fin_metric == FinMetric.DEFAULT_LOSSES.value:
@@ -54,48 +54,38 @@ def compute_fin_metric(credit_stats:list[str],
         return 'Profit'
     
     result_dict = {'FIN_METRIC': [], 'VALUE': []}
-    if display_mode == DisplayMode.ALL.value:
+ 
+    for fin_metric, df in _df_dict.items():
+        result = round(df[fin_metric].mean() / 10**3, 2)        
+        if fin_metric in [FinMetric.DEFAULT_LOSSES.value, FinMetric.PREPAID_LOSSES.value]:
+            result = result * -1
+
+        result_dict['FIN_METRIC'].append(fin_metric)
+        result_dict['VALUE'].append(result)
         
-        for fin_metric, df in _df_dict.items():
-
-            if compute_mode == ComputeMode.MEAN.value:
-                result = round(df[fin_metric].mean() / 10**3, 2)
-            
-            elif compute_mode == ComputeMode.SUM.value:
-                result = round(df[fin_metric].sum() / 10**3, 2)
-            
-            result_dict['FIN_METRIC'].append(fin_metric)
-            result_dict['VALUE'].append(result)
-        
-    elif display_mode == DisplayMode.DECOMPOSED.value:
-        result_dict['CREDIT_STATUS'] = []
-
-        for fin_metric, df in _df_dict.items():
-        
-            if 'Default' in credit_stats:
-                default_result = round(df[df.TARGET == 1][fin_metric].sum(), 2)
-
-                if compute_mode == ComputeMode.MEAN.value:
-                    default_result = round(df[df.TARGET == 1][fin_metric].mean(), 2)
-
-                result_dict['CREDIT_STATUS'].append('Default')
-                result_dict['VALUE'].append(default_result)
-                result_dict['FIN_METRIC'].append(fin_metric)
-        
-            if 'No Default' in credit_stats:
-                non_default_result = round(df[df.TARGET == 0][fin_metric].sum(), 2)
-
-                if compute_mode == ComputeMode.MEAN.value:
-                    non_default_result = round(df[df.TARGET == 0][fin_metric].mean(), 2)
-
-                result_dict['CREDIT_STATUS'].append('Non-Default')
-                result_dict['VALUE'].append(non_default_result)
-                result_dict['FIN_METRIC'].append(fin_metric)
-    
     result = pd.DataFrame.from_dict(result_dict)
     result['FIN_METRIC'] = result['FIN_METRIC'].apply(mapper)
     return result
 
+def show_composition(loan_type):
+    df = _profit
+    if loan_type == LoanType.DEFAULTED.value:
+        df = _defaulted
+    
+    elif loan_type == LoanType.LATE.value:
+        df = _late_but_repaid
+    
+    elif loan_type == LoanType.PREPAID.value:
+        df = _prepaid
+
+    df_trimmed = df \
+                .filter(['NAME_YIELD_GROUP']) \
+                
+    result = (df_trimmed.groupby('NAME_YIELD_GROUP')['NAME_YIELD_GROUP'].count().rename("% of Each Yield Group") / df_trimmed['NAME_YIELD_GROUP'].count()) * 100
+    result = result.reset_index()
+    result["% of Each Yield Group"] = np.round(result["% of Each Yield Group"])
+    return result.rename({'NAME_YIELD_GROUP': 'Yield Group'}, axis=1)
+ 
 def compute_loan_metric(credit_stats: list[str], loan_types: list[str],
                        loan_metric:str, display_mode:str) -> pd.DataFrame:
     

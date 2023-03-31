@@ -1,58 +1,40 @@
 import streamlit as st
 import plotly.express as px
-from enums.data_app_enum import CreditStats, ComputeMode, DisplayMode
-from utils.utils import compute_fin_metric
+from enums.data_app_enum import LoanType
+from utils.utils import compute_fin_metric, show_composition
 
 st.set_page_config(layout='wide', 
                    initial_sidebar_state='expanded')
 
-display_mode = st.sidebar \
-                    .selectbox('Select Display Mode:', (DisplayMode.ALL.value, DisplayMode.DECOMPOSED.value))
+loan_options = [LoanType.DEFAULTED.value, LoanType.LATE.value,  
+                LoanType.PREPAID.value, LoanType.PROFITABLE.value]
 
-if display_mode == DisplayMode.ALL.value:
-    disabled = True
-
-elif display_mode == DisplayMode.DECOMPOSED.value:
-    disabled = False
-
-credit_stats = st.sidebar \
-                    .multiselect('Select Credit Status:', \
-                                 options=[CreditStats.DEFAULT.value, CreditStats.NO_DEFAULT.value], 
-                                 default=[CreditStats.DEFAULT.value, CreditStats.NO_DEFAULT.value],
-                                disabled=disabled)
-
-st.sidebar.subheader('For Financial Metrics:')
-compute_mode = st.sidebar \
-                    .selectbox('Select Compute Mode:', (ComputeMode.SUM.value, ComputeMode.MEAN.value))
+st.sidebar.subheader('To decompose Loan by Yield Group:')
+loan_types = st.sidebar \
+                .selectbox('Select Loan:', loan_options)
 
 #First Row
 st.markdown('### Financial Metrics')
 
-with st.container():
-    if display_mode == DisplayMode.ALL.value:
-        df = compute_fin_metric(credit_stats=None, compute_mode=compute_mode, display_mode=display_mode)
-        df.rename({'FIN_METRIC': 'Financials', 'VALUE': '$ (in thousands)'}, axis=1, inplace=True)
+col_fin_metric, col_loan_composition = st.columns(2)
+with col_fin_metric:
+    df = compute_fin_metric()
+    df.rename({'FIN_METRIC': 'Financials', 'VALUE': '$ (in thousands)'}, axis=1, inplace=True)
 
-        title = 'Mean Monetary Losses or Profit'
-        if compute_mode == ComputeMode.SUM.value:
-            title = 'Total Monetary Losses or Profit'
-
-        fig = px.bar(
+    title = 'Mean Profit/Loss'
+    fig = px.bar(
                 df, x='Financials', 
-                    y='$ (in thousands)', color='Financials', title=title, width=950, height=700)
-        st.plotly_chart(fig)
-    
-    elif display_mode == DisplayMode.DECOMPOSED.value:
-        df = compute_fin_metric(credit_stats=credit_stats, compute_mode=compute_mode, display_mode=display_mode)
-        df.rename({'FIN_METRIC': 'Financials', 
-                   'VALUE': '$ (in thousands)', 
-                   'CREDIT_STATUS': 'Credit Worthiness'}, axis=1, inplace=True)
-        
-        title = 'Mean Monetary Losses or Profit by Credit Worthiness'
-        if compute_mode == ComputeMode.SUM.value:
-            title = 'Total Monetary Losses or Profit by Credit Worthiness'
+                y='$ (in thousands)', color='Financials', title=title, 
+                width=600, height=600, color_discrete_sequence=['red', 'red', 'green', 'green'], text_auto=True)
+    st.plotly_chart(fig)
 
-        fig = px.bar(
-                df, x='Financials', 
-                    y='$ (in thousands)', color='Credit Worthiness', title=title, width=900, height=600)
-        st.plotly_chart(fig)
+with col_loan_composition:
+    df = show_composition(loan_type=loan_types)
+    title = f'Composition of Yield Group for {loan_types}'
+    df = df.sort_values(by='Yield Group')
+    fig = px.bar(df, y="% of Each Yield Group", x='Yield Group', color="Yield Group", title=title, color_discrete_map={
+                "high": "red",
+                "middle": "blue",
+                "low_action": "darkgreen",
+                "low_normal": "limegreen"}, text_auto=True)
+    st.plotly_chart(fig)
